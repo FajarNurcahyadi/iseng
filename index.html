@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> olyn bosok</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            text-align: center;
+            padding: 20px;
+            max-width: 800px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        h1 {
+            font-size: 3em;
+            color: #e91e63;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .heart {
+            font-size: 4em;
+            color: #ff1744;
+            animation: heartbeat 1.5s infinite;
+            display: inline-block;
+        }
+        
+        @keyframes heartbeat {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.2);
+            }
+            50% {
+                transform: scale(1);
+            }
+        }
+        
+        .message {
+            font-size: 1.2em;
+            color: #333;
+            line-height: 1.8;
+            margin: 30px 0;
+        }
+        
+        .cake {
+            font-size: 5em;
+            margin: 20px 0;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .cake:hover {
+            transform: scale(1.2) rotate(10deg);
+        }
+        
+        .balloons {
+            font-size: 3em;
+            margin: 20px 0;
+        }
+        
+        .balloon {
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+            margin: 0 10px;
+        }
+        
+        .balloon:nth-child(1) {
+            animation-delay: 0s;
+        }
+        
+        .balloon:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+        
+        .balloon:nth-child(3) {
+            animation-delay: 1s;
+        }
+        
+        .balloon:nth-child(4) {
+            animation-delay: 1.5s;
+        }
+        
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 20px 10px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(245, 87, 108, 0.4);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(245, 87, 108, 0.6);
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .wishes {
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 15px;
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #f0f;
+            position: absolute;
+            animation: confetti-fall 3s linear infinite;
+        }
+        
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .photo-frame {
+            margin: 20px 0;
+            padding: 10px;
+            background: white;
+            border: 5px solid #e91e63;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .countdown {
+            font-size: 1.5em;
+            color: #e91e63;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="balloons">
+                <span class="balloon">🎈</span>
+                <span class="balloon">🎈</span>
+                <span class="balloon">🎈</span>
+                <span class="balloon">🎈</span>
+            </div>
+
+            <h1>Olyn Bosok 🎉</h1>
+
+            <div class="heart"></div>
+
+            <div class="cake" onclick="blowCandle()">🎂</div>
+            <p style="color: #666; font-style: italic;">*Klik kue untuk tiup lilin!</p>
+
+            <div class="message">
+                <p><strong>hbd walaupun ga ultah,</strong></p>
+
+            </div>
+
+            <button class="btn" onclick="showWishes()"> Buka Ucapan Spesial</button>
+            <button class="btn" onclick="createConfetti()">🎊 Pesta Confetti!</button>
+
+            <div id="specialWishes" class="wishes hidden">
+                <h2 style="color: #e91e63;">Doa Spesial Untukmu 🙏</h2>
+                <p> gaada</p>
+            </div>
+
+            <div class="countdown" id="countdown"></div>
+
+            <p style="margin-top: 30px; color: #666; font-size: 0.9em;">
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Fungsi tiup lilin
+        function blowCandle() {
+            const cake = document.querySelector('.cake');
+            cake.innerHTML = '🎉';
+            setTimeout(() => {
+                cake.innerHTML = '🎂';
+            }, 2000);
+            alert('Olyn incess');
+        }
+
+        // Fungsi tampilkan ucapan spesial
+        function showWishes() {
+            const wishes = document.getElementById('specialWishes');
+            wishes.classList.toggle('hidden');
+        }
+
+        // Fungsi buat confetti
+        function createConfetti() {
+            const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 3 + 's';
+                document.body.appendChild(confetti);
+
+                setTimeout(() => {
+                    confetti.remove();
+                }, 3000);
+            }
+        }
+
+        // Auto confetti saat page load
+        window.addEventListener('load', function() {
+            setTimeout(createConfetti, 500);
+        });
+
+        // Countdown ke ulang tahun berikutnya (ganti tanggal sesuai ulang tahun pacarmu)
+        function updateCountdown() {
+            const birthday = new Date('2026-12-31'); // Ganti dengan tanggal ulang tahun
+            const now = new Date();
+            const diff = birthday - now;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+            if (days > 0) {
+                document.getElementById('countdown').innerHTML =
+                    `Ulang tahun berikutnya dalam ${days} hari lagi! 🎂`;
+            } else {
+                document.getElementById('countdown').innerHTML =
+                    `Selamat Ulang Tahun! 🎉`;
+            }
+        }
+
+        updateCountdown();
+    </script>
+</body>
+
+</html>
